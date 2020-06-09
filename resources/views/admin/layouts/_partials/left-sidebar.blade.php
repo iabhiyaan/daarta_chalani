@@ -104,6 +104,32 @@
             </li>
             @endif
 
+            @if($role == 'admin' || ($role == 'staff' && in_array('users', $user_access)) )
+            {{-- Users --}}
+            <li>
+                <a href="javascript:;">
+                    <i class="sidebar-item-icon fa fa-sitemap"></i>
+                    <span class="nav-label">प्रयोगकर्ता व्यवस्थापन</span>
+                    <i class="fa fa-angle-left arrow"></i>
+                </a>
+                <ul class="nav-2-level collapse">
+                    <li>
+                        <a href="{{ route('users.create') }}">
+                            <span class="fa fa-plus mr-2"></span>
+                            नयाँ थाप
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('users.index') }}">
+                            <span class="fa fa-plus mr-2"></span>
+                            सूची
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            @endif
+
         </ul>
     </div>
 </nav>

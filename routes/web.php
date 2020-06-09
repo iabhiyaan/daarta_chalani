@@ -24,6 +24,7 @@ Route::group(
             Route::resource('designation', 'DesignationController');
             Route::resource('fiscalyear', 'FiscalyearController');
             Route::resource('service', 'ServiceController');
+            Route::resource('users', 'UserController');
         });
     }
 );

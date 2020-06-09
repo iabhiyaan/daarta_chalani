@@ -31,15 +31,7 @@
                     </div>
                     <!-- @include('admin.layouts._partials.messages.info') -->
                     <div class="ibox-body" style="display:none;">
-                        @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
+
 
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -78,7 +70,15 @@
 
                     <!-- <h3>Blog Details</h3> -->
                     <div class="ibox-body" style="">
-
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label>Title</label>
