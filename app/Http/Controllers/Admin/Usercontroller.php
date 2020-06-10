@@ -14,6 +14,7 @@ class Usercontroller extends Controller
         'fiscalyear' => 'Fiscalyear',
         'service' => 'Service',
         'users' => 'Users',
+        'branch' => 'Branch',
     ];
 
     protected $user = null;

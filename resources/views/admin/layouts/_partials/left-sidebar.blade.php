@@ -78,7 +78,7 @@
             </li>
             @endif
 
-            @if($role == 'admin' || ($role == 'staff' && in_array('fiscalyear', $user_access)) )
+            @if($role == 'admin' || ($role == 'staff' && in_array('service', $user_access)) )
             {{-- Service type --}}
             <li>
                 <a href="javascript:;">
@@ -121,6 +121,32 @@
                     </li>
                     <li>
                         <a href="{{ route('users.index') }}">
+                            <span class="fa fa-plus mr-2"></span>
+                            सूची
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            @endif
+
+            @if($role == 'admin' || ($role == 'staff' && in_array('branch', $user_access)) )
+            {{-- Branch --}}
+            <li>
+                <a href="javascript:;">
+                    <i class="sidebar-item-icon fa fa-sitemap"></i>
+                    <span class="nav-label">शाखा व्यवस्थापन</span>
+                    <i class="fa fa-angle-left arrow"></i>
+                </a>
+                <ul class="nav-2-level collapse">
+                    <li>
+                        <a href="{{ route('branch.create') }}">
+                            <span class="fa fa-plus mr-2"></span>
+                            नयाँ थाप
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('branch.index') }}">
                             <span class="fa fa-plus mr-2"></span>
                             सूची
                         </a>

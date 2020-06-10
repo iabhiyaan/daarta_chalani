@@ -96,17 +96,32 @@
 
 
                         </div>
-                        {{-- Position --}}
                         <div class="row">
+                            {{-- Position --}}
                             <div class="form-group col-md-6">
                                 <label>Designation</label>
                                 <select name="designation" class="form-control">
-                                    @if($designations->isNotEmpty())
-                                    <option selected>Please select designation</option>
-                                    @foreach($designations as $key=> $designation)
+                                    @if($composer_designations->isNotEmpty())
+                                    <option>Please select designation</option>
+                                    @foreach($composer_designations as $key=> $designation)
                                     <option
                                     {{ $detail->designation == $designation->id ? 'selected' : '' }}
                                     value="{{ $designation->id }}">{{$designation->designation_name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                            {{-- Branch --}}
+                            <div class="form-group col-md-6">
+                                <label>Branch Name</label>
+                                <select name="branch_name" class="form-control">
+                                    @if($composer_branch->isNotEmpty())
+                                    <option value>Please select designation</option>
+                                    @foreach($composer_branch as $key=> $branch)
+                                    <option
+                                    {{ $detail->branch == $branch->id ? 'selected' : '' }}
+                                    value="{{ $branch->id }}">{{$branch->title}}</option>
                                     @endforeach
                                     @endif
                                 </select>

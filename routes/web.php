@@ -25,6 +25,7 @@ Route::group(
             Route::resource('fiscalyear', 'FiscalyearController');
             Route::resource('service', 'ServiceController');
             Route::resource('users', 'UserController');
+            Route::resource('branch', 'BrachController');
         });
     }
 );

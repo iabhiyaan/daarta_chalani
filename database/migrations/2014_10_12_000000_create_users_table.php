@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('zone')->nullable();
             $table->string('pincode')->nullable();
             $table->string('designation')->nullable();
+            $table->string('branch_name')->nullable();
             $table->text('access_level')->nullable();
             $table->enum('status', ['Active', 'Inactive'])->default('Inactive');
             $table->enum('roles', ['admin', 'controller', 'staff'])->default('staff');
