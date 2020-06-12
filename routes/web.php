@@ -26,6 +26,7 @@ Route::group(
             Route::resource('service', 'ServiceController');
             Route::resource('users', 'UserController');
             Route::resource('branch', 'BrachController');
+            Route::resource('daartachalani', 'DaartaChalaniController');
         });
     }
 );
