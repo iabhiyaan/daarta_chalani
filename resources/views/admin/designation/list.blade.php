@@ -12,25 +12,26 @@
 @section('content')
 
 <div class="page-heading">
-    <h1 class="page-title">विभाग</h1>
+    <h1 class="page-title">पदनाम</h1>
     @include('admin.layouts._partials.messages.info')
 </div>
 <div class="page-content fade-in-up">
     <div class="ibox">
         <div class="ibox-head">
-            <div class="ibox-title">सबै विभागहरु </div>
+            <div class="ibox-title">सबै पदनामहरु </div>
             <div>
-                <a class="btn btn-info btn-md" href="{{route('designation.create')}}">नयाँ विभाग </a>
+                <a class="btn btn-info btn-md" href="{{route('designation.create')}}">नयाँ पदनाम </a>
             </div>
         </div>
 
 
         <div class="ibox-body">
-            <table id="example-table" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+            <table id="example-table" class="table table-striped table-bordered table-hover" cellspacing="0"
+                width="100%">
                 <thead>
                     <tr>
                         <th>क्रम संख्या</th>
-                        <th>विभागको नाम </th>
+                        <th>पदनामको नाम </th>
                         <th>अवस्था</th>
                         <th>Options</th>
                     </tr>
@@ -46,12 +47,17 @@
                         <td>{{$data->published == 1 ? 'Published' : 'Not Published'}}</td>
 
                         <td>
-                            <a href="{{route('designation.edit', $data->id)}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="{{route('designation.edit', $data->id)}}" class="btn btn-success btn-sm"><i
+                                    class="fa fa-edit"></i></a>
 
-                            <form class="adjust-delete-button" action="{{route('designation.destroy', $data->id)}}" method="post">
+                            <form class="adjust-delete-button" action="{{route('designation.destroy', $data->id)}}"
+                                method="post">
                                 @csrf
                                 @method('delete')
-                                <button class="btn btn-danger btn-sm" type="submit" name="button" style="border-radius:50%" onclick="return confirm('Are you sure you want to delete this designation?')"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-danger btn-sm" type="submit" name="button"
+                                    style="border-radius:50%"
+                                    onclick="return confirm('Are you sure you want to delete this designation?')"><i
+                                        class="fa fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>

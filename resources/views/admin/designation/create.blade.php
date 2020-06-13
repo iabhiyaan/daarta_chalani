@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="ibox">
                     <div class="ibox-head">
-                        <div class="ibox-title">नयाँ विभाग</div>
+                        <div class="ibox-title">नयाँ पदनाम</div>
                         <div class="ibox-tools">
                         </div>
                     </div>
@@ -38,9 +38,9 @@
                         @endif
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label>विभागको नाम</label>
+                                <label>पदनामको नाम</label>
                                 <input class="form-control" name="designation_name" value="{{old('designation_name')}}"
-                                    type="text" placeholder="विभागको नाम">
+                                    type="text" placeholder="पदनामको नाम">
                             </div>
 
                         </div>

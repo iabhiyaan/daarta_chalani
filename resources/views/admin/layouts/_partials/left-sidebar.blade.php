@@ -31,7 +31,7 @@
             <li>
                 <a href="javascript:;">
                     <i class="sidebar-item-icon fa fa-sitemap"></i>
-                    <span class="nav-label">विभाग व्यवस्थापन</span>
+                    <span class="nav-label">पदनाम व्यवस्थापन</span>
                     <i class="fa fa-angle-left arrow"></i>
                 </a>
                 <ul class="nav-2-level collapse">

@@ -3,10 +3,10 @@
 <link href="{{asset('/assets/admin/vendors/DataTables/datatables.min.css')}}" rel="stylesheet" />
 
 <style media="screen">
-.adjust-delete-button {
-  margin-top: -28px;
-  margin-left: 37px;
-}
+    .adjust-delete-button {
+        margin-top: -28px;
+        margin-left: 37px;
+    }
 </style>
 @endpush
 @section('content')
@@ -19,7 +19,7 @@
         </li>
         <li class="breadcrumb-item"> All News</li>
     </ol> -->
-@include('admin.layouts._partials.messages.info')
+    @include('admin.layouts._partials.messages.info')
 </div>
 <div class="page-content fade-in-up">
     <div class="ibox">
@@ -32,37 +32,49 @@
 
 
         <div class="ibox-body">
-            <table id="example-table" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+            <table id="example-table" class="table table-striped table-bordered table-hover" cellspacing="0"
+                width="100%">
                 <thead>
                     <tr>
-                      <th>SN</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Address</th>
-                      <th>Published</th>
-                      <th>Options</th>
+                        <th>SN</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Post</th>
+                        <th>Role</th>
+                        <th>Branch</th>
+                        <th>Published</th>
+                        <th>Options</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                  @if($details->count())
+                    @if($details->count())
                     @foreach($details as $key => $data)
 
                     <tr>
-                      <td>{{++$key}}</td>
-                      <td>{{$data->name}}</td>
-                      <td>{{$data->email}}</td>
-                      <td>{{$data->address}}</td>
-                      <td>{{$data->status}}</td>
+                        <td>{{++$key}}</td>
+                        <td>{{$data->name}}</td>
+                        <td>{{$data->email}}</td>
+                        <td>{{$data->address}}</td>
+                        <td>{{$data->desgnation}}</td>
+                        <td>{{$data->roles}}</td>
+                        <td>{{$data->branch}}</td>
+                        <td>{{$data->status}}</td>
 
                         <td>
-                            <a href="{{route('users.edit', $data->id)}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="{{route('users.edit', $data->id)}}" class="btn btn-success btn-sm"><i
+                                    class="fa fa-edit"></i></a>
 
-                              <form class="adjust-delete-button" action="{{route('users.destroy', $data->id)}}" method="post">
-                                  @csrf
-                                  @method('delete')
-                                  <button class="btn btn-danger btn-sm" type="submit" name="button" style="border-radius:50%" onclick="return confirm('Are you sure you want to delete this users?')"><i class="fa fa-trash"></i></button>
-                              </form>
+                            <form class="adjust-delete-button" action="{{route('users.destroy', $data->id)}}"
+                                method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger btn-sm" type="submit" name="button"
+                                    style="border-radius:50%"
+                                    onclick="return confirm('Are you sure you want to delete this users?')"><i
+                                        class="fa fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

@@ -25,7 +25,8 @@
 
                         <div class="ibox-tools">
                             <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                                    class="fa fa-ellipsis-v"></i></a>
 
                         </div>
                     </div>
@@ -36,21 +37,25 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label>Page Title</label>
-                                <input class="form-control" type="text" name="page_title" value="" placeholder="Enter Page Title">
+                                <input class="form-control" type="text" name="page_title" value=""
+                                    placeholder="Enter Page Title">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Meta Title</label>
-                                <input class="form-control" type="text" name="meta_title" placeholder="Enter Meta Title">
+                                <input class="form-control" type="text" name="meta_title"
+                                    placeholder="Enter Meta Title">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Meta Description</label>
-                                <input class="form-control" type="text" value="" name="meta_description" placeholder="Enter Meta Description">
+                                <input class="form-control" type="text" value="" name="meta_description"
+                                    placeholder="Enter Meta Description">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Keywords</label>
-                                <input class="form-control" type="text" value="" name="keyword" placeholder="Enter Keywords">
+                                <input class="form-control" type="text" value="" name="keyword"
+                                    placeholder="Enter Keywords">
                             </div>
                         </div>
                     </div>
@@ -82,28 +87,33 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label>Title</label>
-                                <input class="form-control" name="title" value="{{old('title')}}" type="text" placeholder="Enter Blog Title">
+                                <input class="form-control" name="title" value="{{old('title')}}" type="text"
+                                    placeholder="Enter Blog Title">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Slug</label>
-                                <input class="form-control" name="slug" value="{{old('slug')}}" type="text" placeholder="Enter Blog Slug">
+                                <input class="form-control" name="slug" value="{{old('slug')}}" type="text"
+                                    placeholder="Enter Blog Slug">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Short Description</label>
-                            <textarea name="short_description" class="form-control" rows="3">{{old('short_description')}}</textarea>
+                            <textarea name="short_description" class="form-control"
+                                rows="3">{{old('short_description')}}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" class="form-control" rows="8" cols="80">{{old('description')}}</textarea>
+                            <textarea name="description" class="form-control" rows="8"
+                                cols="80">{{old('description')}}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label>Banner Image</label>
-                            <input id="fileUpload" class="form-control" value="{{old('banner_image')}}" name="banner_image" type="file">
+                            <input id="fileUpload" class="form-control" value="{{old('banner_image')}}"
+                                name="banner_image" type="file">
                             <div id="wrapper" class="mt-2">
                                 <div id="image-holder">
                                 </div>
@@ -137,3 +147,4 @@
 @include('admin.layouts._partials.ckeditorsetting')
 @include('admin.layouts._partials.imagepreview')
 @endpush
+

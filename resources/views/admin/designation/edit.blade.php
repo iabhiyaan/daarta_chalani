@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="ibox">
                     <div class="ibox-head">
-                        <div class="ibox-title">विभाग ईदित गार्नुहोस्</div>
+                        <div class="ibox-title">पदनाम ईदित गार्नुहोस्</div>
 
                         <div class="ibox-tools">
 
@@ -42,9 +42,9 @@
                         <div class="row">
 
                             <div class="form-group col-md-12">
-                                <label>विभागको नाम</label>
+                                <label>पदनामको नाम</label>
                                 <input class="form-control" name="designation_name"
-                                    value="{{$detail->designation_name}}" type="text" placeholder="विभागको नाम">
+                                    value="{{$detail->designation_name}}" type="text" placeholder="पदनामको नाम">
                             </div>
                         </div>
 
@@ -73,5 +73,14 @@
 
 @include('admin.layouts._partials.ckeditorsetting')
 @include('admin.layouts._partials.imagepreview')
+
+
+
+
+
+
+
+
+
 
 @endpush
