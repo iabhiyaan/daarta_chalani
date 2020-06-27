@@ -24,7 +24,7 @@ Route::group(
             Route::resource('designation', 'DesignationController');
             Route::resource('fiscalyear', 'FiscalyearController');
             Route::resource('service', 'ServiceController');
-            Route::resource('users', 'UserController');
+            Route::resource('users', 'Usercontroller');
             Route::resource('branch', 'BrachController');
             Route::resource('daartachalani', 'DaartaChalaniController');
         });
@@ -33,5 +33,4 @@ Route::group(
 
 Route::group([
     'namespace' => 'Front'
-], function () {
-});
+], function () { });

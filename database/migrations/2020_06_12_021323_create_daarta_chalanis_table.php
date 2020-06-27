@@ -28,7 +28,8 @@ class CreateDaartaChalanisTable extends Migration
             $table->string('email')->nullable();
             $table->string('mobile_number')->nullable();
             $table->string('service_type')->nullable();
-            $table->string('branch_type')->nullable();
+            $table->unsignedBigInteger('branch_type')->nullable();
+            $table->foreign('branch_type')->references('id')->on('branches')->onDelete('cascade');
             $table->string('branch_type_description')->nullable();
             $table->longText('description')->nullable();
             $table->string('upload_file')->nullable();

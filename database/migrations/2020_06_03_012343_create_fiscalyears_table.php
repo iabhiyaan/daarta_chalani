@@ -15,7 +15,7 @@ class CreateFiscalyearsTable extends Migration
     {
         Schema::create('fiscalyears', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('year')->nullable();
+            $table->string('title')->nullable();
             $table->tinyInteger('published')->default(0)->nullable();
             $table->timestamps();
         });

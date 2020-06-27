@@ -12,4 +12,8 @@ class DaartaChalani extends Model
     {
         return $this->belongsTo('\App\Models\User');
     }
+    public function branch()
+    {
+        return $this->belongsTo('\App\Models\Branch', 'branch_type');
+    }
 }

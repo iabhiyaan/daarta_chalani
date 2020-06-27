@@ -44,8 +44,8 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>शाखाको बारे</label>
-                                <input class="form-control" name="description" value="{{old('description')}}" type="text"
-                                    placeholder="शाखाको बारे">
+                                <input class="form-control" name="description" value="{{old('description')}}"
+                                    type="text" placeholder="शाखाको बारे">
                             </div>
 
                         </div>
