@@ -41,4 +41,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('\App\Models\DaartaChalani');
     }
+
+    public function branch() {
+        return $this->belongsTo('\App\Models\Branch', 'branch_id');
+    }
 }

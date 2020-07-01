@@ -19,7 +19,7 @@ class CreateDaartaChalanisTable extends Migration
             $table->string('type')->nullable();
             $table->string('daarta_number')->nullable();
             $table->string('chalani_number')->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('subject')->nullable();
             $table->string('sender')->nullable();

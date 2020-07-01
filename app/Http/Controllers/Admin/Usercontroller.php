@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Models\Branch;
 
 class Usercontroller extends Controller
 {
@@ -18,10 +19,12 @@ class Usercontroller extends Controller
     ];
 
     protected $user = null;
+    protected $branch = null;
 
-    public function __construct(User $_user)
+    public function __construct(User $_user, Branch $_branch)
     {
         $this->user = $_user;
+        $this->branch = $_branch;
     }
 
     /**
@@ -31,8 +34,20 @@ class Usercontroller extends Controller
      */
     public function index()
     {
-        $details = $this->user->where('roles', 'staff')->latest()->get();
-        return view('admin.users.list', compact('details'));
+        $time_start = $this->microtime_float();
+        $rel = $this->user->join('branches', 'users.branch_id','=','branches.id');
+        $details = $rel
+        ->where('users.status', 'Active')
+        ->where('users.roles','=','staff')
+        ->select('users.id','users.name','users.email','users.address','users.designation','users.roles','users.status', 'branches.title')
+        ->orderBy('users.created_at', 'DESC')
+        ->get();
+        $time_end = $this->microtime_float();
+        $time = $time_end -$time_start;
+
+        // $userDetails = $rel->where('branches.id', 1)->select('users.name')->get()->dd();
+
+        return view('admin.users.list', compact('details','time'));
     }
 
     /**
@@ -161,5 +176,10 @@ class Usercontroller extends Controller
             $rules['email'] = 'unique:users,email,' . $oldId;
         }
         return $rules;
+    }
+    private function microtime_float() 
+    {
+        [$usec, $sec] = explode(' ', microtime());
+        return ((float)$usec+(float)$sec);
     }
 }

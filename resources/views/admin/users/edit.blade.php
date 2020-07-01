@@ -16,7 +16,7 @@
 <div class="page-content fade-in-up">
     <form method="post" action="{{route('users.update', $detail->id)}}" enctype="multipart/form-data">
         @csrf
-       @method('PUT')
+        @method('PUT')
         <div class="row">
             <div class="col-md-8">
                 <div class="ibox">
@@ -102,10 +102,10 @@
                                 <label>Designation</label>
                                 <select name="designation" class="form-control">
                                     @if($composer_designations->isNotEmpty())
-                                    <option>Please select designation</option>
+                                    <option value>Please select designation</option>
                                     @foreach($composer_designations as $key=> $designation)
                                     <option
-                                    {{ $detail->designation == $designation->id ? 'selected' : '' }}
+                                    {{ $detail->designation_name == $designation->id ? 'selected' : '' }}
                                     value="{{ $designation->id }}">{{$designation->designation_name}}</option>
                                     @endforeach
                                     @endif
@@ -117,10 +117,10 @@
                                 <label>Branch Name</label>
                                 <select name="branch_name" class="form-control">
                                     @if($composer_branch->isNotEmpty())
-                                    <option value>Please select designation</option>
+                                    <option value>Please select branch</option>
                                     @foreach($composer_branch as $key=> $branch)
                                     <option
-                                    {{ $detail->branch == $branch->id ? 'selected' : '' }}
+                                    {{ $detail->branch_id == $branch->id ? 'selected' : '' }}
                                     value="{{ $branch->id }}">{{$branch->title}}</option>
                                     @endforeach
                                     @endif
@@ -133,49 +133,49 @@
                                 <input type="checkbox" name="status"
                                 {{ $detail->status == 'Active' ? 'checked': ''}}>
                                 <span class="input-span"></span>Publish</label>
+                            </div>
+
+                            <br>
+
+                            <div class="form-group">
+                                <button class="btn btn-block btn-success" type="submit">सम्पन गार्नुहोस्</button>
+                            </div>
+
                         </div>
-
-                        <br>
-
-                        <div class="form-group">
-                            <button class="btn btn-block btn-success" type="submit">सम्पन गार्नुहोस्</button>
-                        </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ibox">
-                    <div class="ibox-head">
-                        <div class="ibox-title">Role</div>
-                        <div class="ibox-tools">
+                <div class="col-md-4">
+                    <div class="ibox">
+                        <div class="ibox-head">
+                            <div class="ibox-title">Role</div>
+                            <div class="ibox-tools">
+                            </div>
                         </div>
-                    </div>
-                    <div class="ibox-body" style="">
-                        @if(isset($access_levels) && count($access_levels))
-                        @foreach($access_levels as $key => $option)
-                        <div class="check-list mb-3">
-                            <label class="ui-checkbox ui-checkbox-primary">
-                                <input type="checkbox" value={{ $key }} name="access[]"
-                                {{ in_array($key, $oldAccesses) ? 'checked' : ''}}
-                                >
-                                <span class="input-span"></span>{{ $option }}</label>
-                        </div>
-                        @endforeach
-                        @endif
+                        <div class="ibox-body" style="">
+                            @if(isset($access_levels) && count($access_levels))
+                            @foreach($access_levels as $key => $option)
+                            <div class="check-list mb-3">
+                                <label class="ui-checkbox ui-checkbox-primary">
+                                    <input type="checkbox" value={{ $key }} name="access[]"
+                                    {{ in_array($key, $oldAccesses) ? 'checked' : ''}}
+                                    >
+                                    <span class="input-span"></span>{{ $option }}</label>
+                                </div>
+                                @endforeach
+                                @endif
 
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-            </div>
 
+            </form>
         </div>
 
-    </form>
-</div>
+        @endsection
 
-@endsection
-
-@push('scripts')
-@include('admin.layouts._partials.ckeditorsetting')
-@include('admin.layouts._partials.imagepreview')
-@endpush
+        @push('scripts')
+        @include('admin.layouts._partials.ckeditorsetting')
+        @include('admin.layouts._partials.imagepreview')
+        @endpush
