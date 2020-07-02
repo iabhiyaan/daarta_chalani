@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->text('access_level')->nullable();
             $table->enum('status', ['Active', 'Inactive'])->default('Inactive');
-            $table->enum('roles', ['admin', 'controller', 'staff'])->default('staff');
+            $table->enum('roles', ['admin', 'staff'])->default('staff');
             $table->rememberToken();
             $table->timestamps();
         });

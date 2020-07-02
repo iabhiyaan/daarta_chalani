@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
                     'name' => 'DC controller',
                     'email' => 'info@controller.com',
                     'password' => bcrypt('controller123'),
-                    'roles' => 'controller',
+                    'roles' => 'staff',
                     'status' => 'Active'
                 ],
                 [

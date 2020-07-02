@@ -16,6 +16,7 @@ class Usercontroller extends Controller
         'service' => 'Service',
         'users' => 'Users',
         'branch' => 'Branch',
+        'daartachalani' => 'Daarta Chalani'
     ];
 
     protected $user = null;

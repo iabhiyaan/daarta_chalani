@@ -14,7 +14,7 @@
 
 
 <div class="page-content fade-in-up">
-    <form method="post" action="{{route('fiscalyear.update', $detail->id)}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('branch.update', $detail->id)}}" enctype="multipart/form-data">
         @csrf
         @method('put')
 
@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="ibox">
                     <div class="ibox-head">
-                        <div class="ibox-title">आर्थिक वर्ष ईदित गार्नुहोस्</div>
+                        <div class="ibox-title">शाखा ईदित गार्नुहोस्</div>
 
                         <div class="ibox-tools">
 
@@ -40,11 +40,15 @@
                         </div>
                         @endif
                         <div class="row">
-
                             <div class="form-group col-md-12">
-                                <label>आर्थिक वर्षको नाम</label>
+                                <label>शाखाको नाम</label>
                                 <input class="form-control" name="title" value="{{$detail->title}}" type="text"
-                                    placeholder="आर्थिक वर्षको नाम">
+                                placeholder="शाखाको नाम">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>शाखाको बारे</label>
+                                <textarea class="form-control" name="description"
+                                type="text">{{$detail->description}}</textarea>
                             </div>
                         </div>
 
@@ -52,26 +56,26 @@
                             <label class="ui-checkbox ui-checkbox-primary">
                                 <input name="published" type="checkbox" {{$detail->published == 1 ? 'checked' : ''}}>
                                 <span class="input-span"></span>Publish</label>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <button class="btn btn-block btn-primary" type="submit">सम्पन गार्नुहोस्</button>
-                        </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <button class="btn btn-block btn-primary" type="submit">सम्पन गार्नुहोस्</button>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
+        </form>
+    </div>
 
-    </form>
-</div>
+    @endsection
 
-@endsection
+    @push('scripts')
 
-@push('scripts')
+    @include('admin.layouts._partials.ckeditorsetting')
+    @include('admin.layouts._partials.imagepreview')
 
-@include('admin.layouts._partials.ckeditorsetting')
-@include('admin.layouts._partials.imagepreview')
-
-@endpush
+    @endpush

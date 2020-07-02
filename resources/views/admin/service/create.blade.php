@@ -40,35 +40,35 @@
                             <div class="form-group col-md-12">
                                 <label>सेवा प्रकारको नाम</label>
                                 <input class="form-control" name="title" value="{{old('title')}}" type="text"
-                                    placeholder="सेवा प्रकारको नाम">
+                                placeholder="सेवा प्रकारको नाम">
                             </div>
 
                         </div>
 
                         <div class="check-list">
                             <label class="ui-checkbox ui-checkbox-primary">
-                                <input name="published" type="checkbox">
+                                <input name="published" type="checkbox" checked>
                                 <span class="input-span"></span>Publish</label>
+                            </div>
+
+                            <br>
+
+                            <div class="form-group">
+                                <button class="btn btn-block btn-success" type="submit">सम्पन गार्नुहोस्</button>
+                            </div>
+
                         </div>
-
-                        <br>
-
-                        <div class="form-group">
-                            <button class="btn btn-block btn-success" type="submit">सम्पन गार्नुहोस्</button>
-                        </div>
-
                     </div>
                 </div>
+
             </div>
 
-        </div>
+        </form>
+    </div>
 
-    </form>
-</div>
+    @endsection
 
-@endsection
-
-@push('scripts')
-@include('admin.layouts._partials.ckeditorsetting')
-@include('admin.layouts._partials.imagepreview')
-@endpush
+    @push('scripts')
+    @include('admin.layouts._partials.ckeditorsetting')
+    @include('admin.layouts._partials.imagepreview')
+    @endpush

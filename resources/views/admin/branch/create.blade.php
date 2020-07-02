@@ -40,12 +40,11 @@
                             <div class="form-group col-md-12">
                                 <label>शाखाको नाम</label>
                                 <input class="form-control" name="title" value="{{old('title')}}" type="text"
-                                    placeholder="शाखाको नाम">
+                                placeholder="शाखाको नाम">
                             </div>
                             <div class="form-group col-md-12">
                                 <label>शाखाको बारे</label>
-                                <input class="form-control" name="description" value="{{old('description')}}"
-                                    type="text" placeholder="शाखाको बारे">
+                                <textarea class="form-control" name="description" type="text">{{old('description')}}</textarea>
                             </div>
 
                         </div>
@@ -54,26 +53,26 @@
                             <label class="ui-checkbox ui-checkbox-primary">
                                 <input name="published" type="checkbox" checked>
                                 <span class="input-span"></span>Publish</label>
+                            </div>
+
+                            <br>
+
+                            <div class="form-group">
+                                <button class="btn btn-block btn-success" type="submit">सम्पन गार्नुहोस्</button>
+                            </div>
+
                         </div>
-
-                        <br>
-
-                        <div class="form-group">
-                            <button class="btn btn-block btn-success" type="submit">सम्पन गार्नुहोस्</button>
-                        </div>
-
                     </div>
                 </div>
+
             </div>
 
-        </div>
+        </form>
+    </div>
 
-    </form>
-</div>
+    @endsection
 
-@endsection
-
-@push('scripts')
-@include('admin.layouts._partials.ckeditorsetting')
-@include('admin.layouts._partials.imagepreview')
-@endpush
+    @push('scripts')
+    @include('admin.layouts._partials.ckeditorsetting')
+    @include('admin.layouts._partials.imagepreview')
+    @endpush
