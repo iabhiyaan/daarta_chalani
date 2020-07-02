@@ -183,4 +183,23 @@ class Usercontroller extends Controller
         [$usec, $sec] = explode(' ', microtime());
         return ((float)$usec+(float)$sec);
     }
+
+    public function getUserFromBranch($branch_id) 
+    {
+       $usersFromBranch = $this->user
+       ->join('branches', 'users.branch_id','=','branches.id')
+       ->where('branches.id', $branch_id)
+       ->select('users.name', 'users.id')
+       ->get();
+       if($usersFromBranch->isNotEmpty()){
+         return response()->json([
+            'message' => 'Users found',
+            'data' => $usersFromBranch,
+        ],200);
+     } 
+     return response()->json([
+        'message' => 'No users found from this branch',
+        'data' => null,
+    ],404);
+ }
 }

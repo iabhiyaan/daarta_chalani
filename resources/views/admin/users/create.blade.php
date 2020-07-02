@@ -93,8 +93,6 @@
                                 <label>Pincode</label>
                                 <input class="form-control" name="pincode" value="{{old('pincode')}}" type="text" placeholder="Enter pincode" required>
                             </div>
-
-
                         </div>
                         <div class="row">
                             {{-- Position --}}
@@ -128,47 +126,51 @@
                             <label class="ui-checkbox ui-checkbox-primary">
                                 <input type="checkbox" name="status" checked>
                                 <span class="input-span"></span>Publish</label>
+                            </div>
+
+                            <br>
+
+                            <div class="form-group">
+                                <button class="btn btn-block btn-success" type="submit">सम्पन गार्नुहोस्</button>
+                            </div>
+
                         </div>
-
-                        <br>
-
-                        <div class="form-group">
-                            <button class="btn btn-block btn-success" type="submit">सम्पन गार्नुहोस्</button>
-                        </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="ibox">
-                    <div class="ibox-head">
-                        <div class="ibox-title">Role</div>
-                        <div class="ibox-tools">
+                <div class="col-md-4">
+                    <div class="ibox">
+                        <div class="ibox-head">
+                            <div class="ibox-title">Role</div>
+                            <div class="ibox-tools">
+                            </div>
                         </div>
-                    </div>
-                    <div class="ibox-body" style="">
-                        @if(isset($access_levels) && count($access_levels))
-                        @foreach($access_levels as $key => $option)
-                        <div class="check-list mb-3">
-                            <label class="ui-checkbox ui-checkbox-primary">
-                                <input type="checkbox" value={{ $key }} name="access[]">
-                                <span class="input-span"></span>{{ $option }}</label>
-                        </div>
-                        @endforeach
-                        @endif
+                        <div class="ibox-body" style="">
+                            @if(isset($access_levels) && count($access_levels))
+                            @foreach($access_levels as $key => $option)
+                            <div class="check-list mb-3">
+                                <label class="ui-checkbox ui-checkbox-primary">
+                                    <input type="checkbox" value={{ $key }} name="access[]">
+                                    <span class="input-span"></span>{{ $option }}
+                                </label>
+                            </div>
+                            @endforeach
+                            @endif
 
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
+        </form>
+    </div>
 
-    </form>
-</div>
+    @endsection
 
-@endsection
-
-@push('scripts')
-@include('admin.layouts._partials.ckeditorsetting')
-@include('admin.layouts._partials.imagepreview')
-@endpush
+    @push('scripts')
+    @include('admin.layouts._partials.ckeditorsetting')
+    @include('admin.layouts._partials.imagepreview')
+    <script type="text/javascript">
+       fetch("{{route('getUserFromBranch', 1)}}").then(response => response.json()).then(data => console.log(data));
+   </script>
+   @endpush

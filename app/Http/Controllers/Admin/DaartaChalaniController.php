@@ -163,7 +163,6 @@ class DaartaChalaniController extends Controller
 
     public function documentProcessing($documents, $type)
     {
-
         $daartaPath = public_path('files/daarta');
         $chalaniPath = public_path('files/chalani');
 
@@ -177,4 +176,7 @@ class DaartaChalaniController extends Controller
 
         return $value['document'];
     }
+
+    
+
 }

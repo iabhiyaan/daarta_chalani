@@ -21,6 +21,12 @@ Route::group(
         ], function () {
             Route::get('settings', 'SettingController@index')->name('settings');
             Route::put('settings/save/{id}', 'SettingController@update')->name('settings.update');
+
+            Route::get('get-users-from-branch/{id}', 'Usercontroller@getUserFromBranch')->name('getUserFromBranch');
+
+            /*
+            * Resource Full Routes
+            */
             Route::resource('designation', 'DesignationController');
             Route::resource('fiscalyear', 'FiscalyearController');
             Route::resource('service', 'ServiceController');
