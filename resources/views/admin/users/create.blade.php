@@ -111,7 +111,7 @@
                             {{-- Branch --}}
                             <div class="form-group col-md-6">
                                 <label>Branch Name</label>
-                                <select name="branch_name" class="form-control">
+                                <select name="branch_id" class="form-control">
                                     @if($composer_branch->isNotEmpty())
                                     <option selected value>Please select branch</option>
                                     @foreach($composer_branch as $key=> $branch)
@@ -171,6 +171,6 @@
     @include('admin.layouts._partials.ckeditorsetting')
     @include('admin.layouts._partials.imagepreview')
     <script type="text/javascript">
-       fetch("{{route('getUserFromBranch', 1)}}").then(response => response.json()).then(data => console.log(data));
-   </script>
-   @endpush
+        fetch("{{route('getUserFromBranch', 1)}}").then(response => response.json()).then(data => console.log(data));
+    </script>
+    @endpush

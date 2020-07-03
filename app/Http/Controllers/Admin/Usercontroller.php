@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 use App\Models\Branch;
+use App\User;
+use Illuminate\Http\Request;
 
 class Usercontroller extends Controller
 {
     protected $ACCESS_LEVELS = [
-        'settings' => 'Settings',
-        'designation' => 'Designation',
-        'fiscalyear' => 'Fiscalyear',
-        'service' => 'Service',
-        'users' => 'Users',
-        'branch' => 'Branch',
-        'daartachalani' => 'Daarta Chalani'
+        'settings'      => 'Settings',
+        'designation'   => 'Designation',
+        'fiscalyear'    => 'Fiscalyear',
+        'service'       => 'Service',
+        'users'         => 'Users',
+        'branch'        => 'Branch',
+        'daartachalani' => 'Daarta Chalani',
     ];
 
-    protected $user = null;
+    protected $user   = null;
     protected $branch = null;
 
     public function __construct(User $_user, Branch $_branch)
     {
-        $this->user = $_user;
+        $this->user   = $_user;
         $this->branch = $_branch;
     }
 
@@ -36,19 +36,19 @@ class Usercontroller extends Controller
     public function index()
     {
         $time_start = $this->microtime_float();
-        $rel = $this->user->join('branches', 'users.branch_id','=','branches.id');
-        $details = $rel
+        $rel        = $this->user->join('branches', 'users.branch_id', '=', 'branches.id');
+        $details    = $rel
         ->where('users.status', 'Active')
-        ->where('users.roles','=','staff')
-        ->select('users.id','users.name','users.email','users.address','users.designation','users.roles','users.status', 'branches.title')
+        ->where('users.roles', '=', 'staff')
+        ->select('users.id', 'users.name', 'users.email', 'users.address', 'users.designation', 'users.roles', 'users.status', 'branches.title')
         ->orderBy('users.created_at', 'DESC')
         ->get();
         $time_end = $this->microtime_float();
-        $time = $time_end -$time_start;
+        $time     = $time_end - $time_start;
 
         // $userDetails = $rel->where('branches.id', 1)->select('users.name')->get()->dd();
 
-        return view('admin.users.list', compact('details','time'));
+        return view('admin.users.list', compact('details', 'time'));
     }
 
     /**
@@ -71,17 +71,17 @@ class Usercontroller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users',
-            'password' => 'required|confirmed|min:8',
-            'address' => 'required',
+            'name'        => 'required',
+            'email'       => 'required|unique:users',
+            'password'    => 'required|confirmed|min:8',
+            'address'     => 'required',
             'national_id' => 'required',
-            'mobile_no' => 'required|numeric',
+            'mobile_no'   => 'required|numeric',
         ]);
-        $formData = $request->except(['password', 'status', 'password_confirmation', 'access_level', 'access']);
-        $formData['password'] = bcrypt($request->password);
-        $formData['status'] = is_null($request->status) ? 'Inactive' : 'Active';
-        $formData['roles'] = 'staff';
+        $formData                 = $request->except(['password', 'status', 'password_confirmation', 'access_level', 'access']);
+        $formData['password']     = bcrypt($request->password);
+        $formData['status']       = is_null($request->status) ? 'Inactive' : 'Active';
+        $formData['roles']        = 'staff';
         $formData['access_level'] = '';
         if ($request->access) {
             $accesses = $request->access;
@@ -113,9 +113,9 @@ class Usercontroller extends Controller
      */
     public function edit($id)
     {
-        $detail = $this->user->findOrFail($id);
+        $detail        = $this->user->findOrFail($id);
         $access_levels = $this->ACCESS_LEVELS;
-        $oldAccesses = $detail->access_level ? explode(',', $detail->access_level) : array();
+        $oldAccesses   = $detail->access_level ? explode(',', $detail->access_level) : array();
         return view('admin.users.edit', compact('detail', 'access_levels', 'oldAccesses'));
     }
 
@@ -131,7 +131,7 @@ class Usercontroller extends Controller
         $detail = $this->user->findOrFail($id);
 
         $sameEmailVal = $detail->email == $request->email ? true : false;
-        $message = ['access.required' => "please select atleast one role"];
+        $message      = ['access.required' => "please select atleast one role"];
 
         $request->validate($this->rules($detail->id, $sameEmailVal), $message);
 
@@ -141,7 +141,7 @@ class Usercontroller extends Controller
             $formData['password'] = bcrypt($request->password);
         }
 
-        $formData['status'] = is_null($request->status) ? 'Inactive' : 'Active';
+        $formData['status']       = is_null($request->status) ? 'Inactive' : 'Active';
         $formData['access_level'] = '';
 
         if ($request->access) {
@@ -170,7 +170,7 @@ class Usercontroller extends Controller
     public function rules($oldId = null, $sameEmailVal = false)
     {
 
-        $rules =  [
+        $rules = [
             'email' => 'unique:users|email',
         ];
         if ($sameEmailVal) {
@@ -178,28 +178,28 @@ class Usercontroller extends Controller
         }
         return $rules;
     }
-    private function microtime_float() 
+    private function microtime_float()
     {
         [$usec, $sec] = explode(' ', microtime());
-        return ((float)$usec+(float)$sec);
+        return ((float) $usec + (float) $sec);
     }
 
-    public function getUserFromBranch($branch_id) 
+    public function getUserFromBranch($branch_id)
     {
-       $usersFromBranch = $this->user
-       ->join('branches', 'users.branch_id','=','branches.id')
-       ->where('branches.id', $branch_id)
-       ->select('users.name', 'users.id')
-       ->get();
-       if($usersFromBranch->isNotEmpty()){
-         return response()->json([
-            'message' => 'Users found',
-            'data' => $usersFromBranch,
-        ],200);
-     } 
-     return response()->json([
-        'message' => 'No users found from this branch',
-        'data' => null,
-    ],404);
- }
+        $usersFromBranch = $this->user
+        ->join('branches', 'users.branch_id', '=', 'branches.id')
+        ->where('branches.id', $branch_id)
+        ->select('users.name', 'users.id')
+        ->get();
+        if ($usersFromBranch->isNotEmpty()) {
+            return response()->json([
+                'message' => 'Users found',
+                'data'    => $usersFromBranch,
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'No users found from this branch',
+            'data'    => null,
+        ], 404);
+    }
 }
